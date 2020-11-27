@@ -1,12 +1,13 @@
 import './App.css';
 import { Component } from 'react';
-import {Container, Row, Col, Table} from 'react-bootstrap';
+import {Row, Col, Navbar, NavItem, SideNav, SideNavItem, Container, Button, Card, CardTitle, Icon} from 'react-materialize';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			books: []
+			books: [],
+			terms: []
     		};
 		this.getBooks = this.getBooks.bind(this);
   	}
@@ -22,7 +23,7 @@ class App extends Component {
                         method: 'GET',
                         headers: myHeaders
                 }
-                fetch("https://collection.bccampus.ca/wp-json/wp/v2/oer?page=13", requestOptions)
+                fetch("https://collection.bccampus.ca/wp-json/wp/v2/oer?per_page=15", requestOptions)
                         .then(response => response.json())
                         .then((data) => {
                                 this.setState({books: data})
@@ -33,50 +34,107 @@ class App extends Component {
 		
 	}
 
+	getTerms() {
+                var myHeaders = new Headers();
+                myHeaders.append('Content-Type', 'application/json')
+                var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders
+                }
+                fetch("https://collection.bccampus.ca/wp-json/ptam/v2/get_terms", requestOptions)
+                        .then(response => response.json())
+                        .then((data) => {
+                                this.setState({terms: data})
+                                console.log(this.state.terms)
+                        })
+                        .catch(error => console.log('error', error));	
+	}
 	
 	render() {
 		return (
 
-<Container>
-  <Row>
-    <Col>
-      <h1>Duck Data</h1>
-    </Col>
-  </Row>
+
+
+
+<div>
+
+
+<Navbar
+  alignLinks="left"
+  brand={<a className="brand-logo" href="#">Archives: OER</a>}
+  centerLogo
+  className="cyan darken-2"
+  id="mobile-nav"
+  menuIcon={<Icon>menu</Icon>}
+  options={{
+    draggable: true,
+    edge: 'left',
+    inDuration: 250,
+    onCloseEnd: null,
+    onCloseStart: null,
+    onOpenEnd: null,
+    onOpenStart: null,
+    outDuration: 200,
+    preventScrolling: true
+  }}
+>
+<NavItem>
+
+<style>
+    {`
+            #root > div {
+              z-index: 99999 !important;
+            }
+          `}
+  </style>
+  <SideNav
+    id="SideNav-10"
+    options={{
+      draggable: true
+    }}
+    trigger={<Button node="button">Filter</Button>}
+  >
+    <SideNavItem href="#!second">
+      Filter Items
+    </SideNavItem>
+  </SideNav>
+
+</NavItem>
+</Navbar>
 
   <Row>
     <Col>
-      <h1>Duck Data</h1>
-		<Table striped bordered hover>
-			<thead>
-				<tr>
-				 <th>link</th>
-				 <th>title</th>
-				 <th>authors</th>
-				 <th>keywords</th>
-				 <th>oertypes</th>
-				 <th>Levels</th>
-				</tr> 
-		   </thead>
-			<tbody>
-			{this.state.books.map((data, key) => {
-				return (
-				<tr>
-					<th>{data.link}</th>
-					<th>{data.title.rendered}</th>
-					<th>{data.authors}</th>
-					<th>{data.keywords}</th>
-					<th>{data.oertype}</th>
-					<th>{data.Levels}</th>
-				</tr>
-				)
-			})}
-			</tbody>
-		</Table>
-    </Col>
-  </Row>
-</Container>
+	<h3>Open Education Resources</h3>
+	<p>Showing {this.state.books.length} books</p>
+         </Col>
+        </Row>
+<Row>
+<style>{
+`.card .card-image .card-title {
+	color: #0082b1;
+	font-weight: normal;
+}`
+}
+</style>
+        {this.state.books.map((data, key) => {
+                return (
 
+                                <Col s={4}>
+                                        <Card
+						actions={[
+							<a href={data.link}>Read Now</a>
+						]}
+						header={<CardTitle image="https://collection.bccampus.ca/wp-content/uploads/2020/08/OER-default.jpg">{data.title.rendered}</CardTitle>}
+											
+					>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus rutrum eros, vitae varius dui tempor nec. Mauris mattis fermentum rutrum. Ut venenatis facilisis hendrerit. Mauris consequat, odio eu tempor laoreet, ipsum nibh finibus dolor, vitae tempus risus enim ac eros. Aliquam bibendum ante quis purus pulvinar consequat. Fusce fringilla enim turpis, non porta sapien consequat id. Suspendisse finibus justo non aliquam efficitur.
+                                        </Card>
+                                </Col>
+
+                )
+        })}
+</Row>
+</div>
 
   		);
 	}
