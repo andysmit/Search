@@ -103,22 +103,30 @@ class App extends Component {
 	</Row>
 	<Row>
 		<style>{
-		`.card .card-image .card-title {
-				color: #0082b1;
-				font-weight: normal;
-		}`
+		`.card .card-title {
+			color: #0082b1;
+				
+		}
+
+		
+		.card.large {
+			height:650px
+		}
+		`
 		}
 		</style>
 		{this.state.books.map((data, key) => {
 			return (
-				<Col s={4}>
+				<Col l={4}>
 					<Card
 						actions={[
-								<a href={data.link}>Read Now</a>
+							<a href={data.link}>Read Now</a>
 						]}
-						header={<CardTitle image="https://hazlitt.net/sites/default/files/default-book.png">{data.title.rendered}</CardTitle>}
+						header={<CardTitle image="https://image.freepik.com/free-vector/blank-empty-magazine-book-cover_134452-6.jpg"></CardTitle>}
+						title={data.title.rendered}
+						className="large"
 					>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus rutrum eros, vitae varius dui tempor nec. Mauris mattis fermentum rutrum. Ut venenatis facilisis hendrerit. Mauris consequat, odio eu tempor laoreet, ipsum nibh finibus dolor, vitae tempus risus enim ac eros. Aliquam bibendum ante quis purus pulvinar consequat. Fusce fringilla enim turpis, non porta sapien consequat id. Suspendisse finibus justo non aliquam efficitur.
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus rutrum eros, vitae varius dui tempor nec. on porta sapien consequat id. Suspendisse finibus justo non aliquam efficitur.
 					</Card>
 				</Col>
 
