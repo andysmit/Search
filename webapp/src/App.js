@@ -116,7 +116,7 @@ class App extends Component {
 						actions={[
 								<a href={data.link}>Read Now</a>
 						]}
-						header={<CardTitle image="https://collection.bccampus.ca/wp-content/uploads/2020/08/OER-default.jpg">{data.title.rendered}</CardTitle>}
+						header={<CardTitle image="https://hazlitt.net/sites/default/files/default-book.png">{data.title.rendered}</CardTitle>}
 					>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus rutrum eros, vitae varius dui tempor nec. Mauris mattis fermentum rutrum. Ut venenatis facilisis hendrerit. Mauris consequat, odio eu tempor laoreet, ipsum nibh finibus dolor, vitae tempus risus enim ac eros. Aliquam bibendum ante quis purus pulvinar consequat. Fusce fringilla enim turpis, non porta sapien consequat id. Suspendisse finibus justo non aliquam efficitur.
 					</Card>
