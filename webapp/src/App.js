@@ -53,87 +53,78 @@ class App extends Component {
 	render() {
 		return (
 
-
-
-
 <div>
-
-
-<Navbar
-  alignLinks="left"
-  brand={<a className="brand-logo" href="#">Archives: OER</a>}
-  centerLogo
-  className="cyan darken-2"
-  id="mobile-nav"
-  menuIcon={<Icon>menu</Icon>}
-  options={{
-    draggable: true,
-    edge: 'left',
-    inDuration: 250,
-    onCloseEnd: null,
-    onCloseStart: null,
-    onOpenEnd: null,
-    onOpenStart: null,
-    outDuration: 200,
-    preventScrolling: true
-  }}
->
-<NavItem>
-
-<style>
-    {`
-            #root > div {
-              z-index: 99999 !important;
-            }
-          `}
-  </style>
-  <SideNav
-    id="SideNav-10"
-    options={{
-      draggable: true
-    }}
-    trigger={<Button node="button">Filter</Button>}
-  >
-    <SideNavItem href="#!second">
-      Filter Items
-    </SideNavItem>
-  </SideNav>
-
-</NavItem>
-</Navbar>
-
-  <Row>
-    <Col>
-	<h3>Open Education Resources</h3>
-	<p>Showing {this.state.books.length} books</p>
-         </Col>
-        </Row>
-<Row>
-<style>{
-`.card .card-image .card-title {
-	color: #0082b1;
-	font-weight: normal;
-}`
-}
-</style>
-        {this.state.books.map((data, key) => {
-                return (
-
-                                <Col s={4}>
-                                        <Card
+	<Navbar
+	  alignLinks="left"
+	  brand={<a className="brand-logo" href="#">Archives: OER</a>}
+	  centerLogo
+	  className="cyan darken-2"
+	  id="mobile-nav"
+	  menuIcon={<Icon>menu</Icon>}
+	  options={{
+		draggable: true,
+		edge: 'left',
+		inDuration: 250,
+		onCloseEnd: null,
+		onCloseStart: null,
+		onOpenEnd: null,
+		onOpenStart: null,
+		outDuration: 200,
+		preventScrolling: true
+	  }}
+	>
+		<NavItem>
+			<style>
+			{`
+				#root > div {
+					z-index: 99999 !important;
+				}
+			`}
+			 </style>
+			<SideNav
+				id="SideNav-10"
+				options={{
+				  draggable: true
+				}}
+				trigger={<Button node="button">Filter</Button>}
+			>
+				<SideNavItem href="#!second">
+				  Filter Items
+				</SideNavItem>
+			</SideNav>
+		</NavItem>
+	</Navbar>
+	
+	<Row>
+		<Col>
+			<h3>Open Education Resources</h3>
+			<p>Showing {this.state.books.length} books</p>
+		</Col>
+	</Row>
+	<Row>
+		<style>{
+		`.card .card-image .card-title {
+				color: #0082b1;
+				font-weight: normal;
+		}`
+		}
+		</style>
+		{this.state.books.map((data, key) => {
+			return (
+				<Col s={4}>
+					<Card
 						actions={[
-							<a href={data.link}>Read Now</a>
+								<a href={data.link}>Read Now</a>
 						]}
 						header={<CardTitle image="https://collection.bccampus.ca/wp-content/uploads/2020/08/OER-default.jpg">{data.title.rendered}</CardTitle>}
-											
 					>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus rutrum eros, vitae varius dui tempor nec. Mauris mattis fermentum rutrum. Ut venenatis facilisis hendrerit. Mauris consequat, odio eu tempor laoreet, ipsum nibh finibus dolor, vitae tempus risus enim ac eros. Aliquam bibendum ante quis purus pulvinar consequat. Fusce fringilla enim turpis, non porta sapien consequat id. Suspendisse finibus justo non aliquam efficitur.
-                                        </Card>
-                                </Col>
+					</Card>
+				</Col>
 
-                )
-        })}
-</Row>
+			)
+		})}
+	</Row>
 </div>
 
   		);
